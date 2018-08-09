@@ -1,0 +1,19 @@
+#chat
+{
+  
+    margin-left: 450px;
+    width:900px;
+    height: 600px;
+    background-color: blanchedalmond;
+    padding-top: 30px;
+    padding-left: 200px;
+}
+#login
+{
+    float: left;
+    width: 400px;
+    height: 600px;
+    background-color: rgb(223, 156, 169);
+    padding-left: 40px;
+    padding-top: 50px;
+}

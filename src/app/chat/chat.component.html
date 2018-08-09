@@ -1,0 +1,16 @@
+<div id="login">
+<input type="text"> SEARCH
+<br /><br />
+<button (click)="Authenticate()">Authenticate </button><br /><br />
+<input type="text"  [(ngModel)]="Mychannel">
+<button (click)="AddCh()">Add Channel</button>
+</div>
+
+<div id="chat">
+    <h1>WELCOME TO CHAT GROUP!</h1>
+    <ul *ngFor="let arr of arrylist">
+        <li>{{arr}}</li>
+    </ul>
+    <input type="text"  [(ngModel)]="Mymsg">
+    <button (click)="Msg() ">Send Text</button>
+</div>

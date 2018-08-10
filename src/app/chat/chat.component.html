@@ -14,8 +14,8 @@
     <div id="head"></div><hr>
     <div id="msgs">
     <ul *ngFor="let arr of arrylist" >
-            <span  [ngClass]="arr.sender?'my':'your'">{{arr.msg}}</span>
-    <li>{{arr}}</li>
+            <span > {{arr.sender}} <br />{{arr.msg}}</span>
+    <li></li>
     
      
     </ul>

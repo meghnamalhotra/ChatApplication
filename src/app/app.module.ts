@@ -14,12 +14,15 @@ import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 import{RouterModule, Routes, Router}from '@angular/router';
 import{FormsModule} from '@angular/forms';
+import{ChatService} from './chat.service';
 const router:Routes=[{
   path: '',
     component:LoginComponent},
     {
     path: 'chatpage',
-    component:ChatComponent},
+    component:ChatComponent,
+    canActivate:[ChatService]
+  },
     {
       path:'login',
       component:LoginComponent

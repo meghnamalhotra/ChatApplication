@@ -1,19 +1,49 @@
 #chat
 {
-  
-    margin-left: 450px;
-    width:900px;
+   margin-left: 400px;
+    width:60%;
     height: 600px;
-    background-color: blanchedalmond;
+    background-color: rgb(245, 243, 239);
     padding-top: 30px;
-    padding-left: 200px;
+    padding-left: 90px;
 }
 #login
 {
     float: left;
-    width: 400px;
+    width: 20%;
     height: 600px;
-    background-color: rgb(223, 156, 169);
+    background-color:#4A394B;
     padding-left: 40px;
     padding-top: 50px;
+    margin-left: 100px;
+}
+#input
+{
+   
+    margin-top: 70px;
+    width:500px;
+
+}
+#button
+{
+    margin-top: 40px;
+   
+}
+#head
+{
+    width: 100%;
+    height: 30px;
+}
+#msgs
+{
+    overflow: auto;
+    width: 100%;
+    height:400px;
+    
+   
+}
+#main
+{
+    width: 100%;
+    
 }

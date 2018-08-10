@@ -1,16 +1,27 @@
+
+<div id="main">
 <div id="login">
-<input type="text"> SEARCH
+<input type="text" placeholder="Search Channel">
+<button (click)="searchCh()">Search</button><br/>
 <br /><br />
 <button (click)="Authenticate()">Authenticate </button><br /><br />
 <input type="text"  [(ngModel)]="Mychannel">
 <button (click)="AddCh()">Add Channel</button>
+<button (click)="addRole()" >Add Role</button>
 </div>
 
 <div id="chat">
-    <h1>WELCOME TO CHAT GROUP!</h1>
-    <ul *ngFor="let arr of arrylist">
-        <li>{{arr}}</li>
+    <div id="head"></div><hr>
+    <div id="msgs">
+    <ul *ngFor="let arr of arrylist" >
+            <span  [ngClass]="arr.sender?'my':'your'">{{arr.msg}}</span>
+    <li>{{arr}}</li>
+    
+     
     </ul>
-    <input type="text"  [(ngModel)]="Mymsg">
-    <button (click)="Msg() ">Send Text</button>
+    </div>
+    <button >+</button>
+    <input id="input" type="text"  [(ngModel)]="Mymsg" class="msg">
+    <button id="button" (click)="Msg() ">Send Text</button>
+</div>
 </div>

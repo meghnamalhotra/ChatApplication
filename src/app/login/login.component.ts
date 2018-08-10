@@ -22,6 +22,7 @@ title="LET'S CHAT";
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
+        localStorage.setItem("Identity",userData.email);
       this.router.navigate(['chatpage'])
       }
     );

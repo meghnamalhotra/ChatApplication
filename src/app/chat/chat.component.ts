@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{ChatService} from '../chat.service';
+import { identity } from '../../../node_modules/rxjs';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -10,6 +11,8 @@ export class ChatComponent implements OnInit {
   Mymsg:string;
   arrylist=[];
   len:number;
+  sender:boolean;
+ iden=this.service.identity;
   constructor(private service:ChatService) { }
  
   ngOnInit() {
@@ -47,18 +50,30 @@ listallmsgs()
        for(let index=0;index<this.len;index++)
        {
         console.log(JSON.parse(res._body).messages[index].body);
-        this.arrylist[index]=JSON.parse(res._body).messages[index].body;
+        if(JSON.parse(res._body).messages[index].from==this.iden){
+        this.arrylist[index]=JSON.parse(res._body).messages[index].body,this.sender=true;
+        console.log(this.sender);
+        }else
+        this.arrylist[index]=JSON.parse(res._body).messages[index].body,this.sender=false;
+        console.log(this.sender);
        }
       console.log(this.arrylist);
-    // for(let index=0;index<this.len;index++)
-    //   {
-    //     console.log("msgs     "+res.Mymsg[index].Body);
-    //     this.arrylist[index]=res.Mymsg[index].Body
-    //   }
-    },//console.log("get call"+JSON.stringify(res)) }),
+   
+    },
    err => { console.log(err) }
    
  )
+}
+searchCh()
+{
+}
+addRole(){
+  this.service.addRole().subscribe(res=>{
+    console.log(res);
+  },
+err=>{
+    console.log(err);
+})
 }
 
 }

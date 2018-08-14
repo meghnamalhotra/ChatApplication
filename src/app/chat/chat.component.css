@@ -48,6 +48,49 @@
     
 }
 
-li{
+#list{
     list-style-type: none;
+    width: 600px;
+    height: 35px;
+    background-color: rgb(160, 162, 163);
+    padding-bottom: 30px;
+}
+#chatdiv
+
+{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+   
+}
+#imagee
+{
+    width: 85px;
+    height: 84px;
+    float: right;
+    margin-bottom: -1px;
+    margin-top: -55px;
+    margin-right: 39px;
+    box-shadow: 3px 3px rgb(153, 153, 153);
+}
+
+#span
+{
+    float: right;
+    font-size: 20px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    color: #4A394B;
+}
+h4{
+    color:white
+}
+#channellist
+{
+    color:white;
+    text-transform: uppercase;
+}
+#channellist:hover{
+    color: aquamarine;
+    cursor: pointer;
+   
 }

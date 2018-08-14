@@ -3,7 +3,7 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { CanActivate, Router } from '@angular/router';
 
-import { Observable } from '../../node_modules/rxjs';
+import { Observable, pipe } from '../../node_modules/rxjs';
 import { map } from '../../node_modules/rxjs/operators';
 import { SocialUser } from '../../node_modules/angular-6-social-login';
 @Injectable({
@@ -24,7 +24,7 @@ export class ChatService implements CanActivate {
       return false;
     }
   }
-
+  
   serId: string = "IS3d084ab427a14238a838899811a10138";
   channel: string = "CH54b64c8dfcec482f80f757a7063038a4";
   identity: string = localStorage.getItem("Identity");
@@ -39,21 +39,40 @@ export class ChatService implements CanActivate {
     return this.httpobj.post("https://chat.twilio.com/v2/Services", "FriendlyName=FriendlyName", this.options);//show data
   }
 
-  addCh(Mychannel): Observable<any> {
+  addCh(Mychannel):Observable<any> {
     this.channel = Mychannel;
     return this.httpobj.post("https://chat.twilio.com/v2/Services/" + this.serId + "/Channels", "FriendlyName=FriendlyName&UniqueName=" + Mychannel, this.options)
   }
+  joinchannel(channelid):Observable<any>
 
-  Msgs(Mymsg): Observable<any> {
+  {
+  // this.channel=channelid;
+   
+ return this.httpobj.post("https://chat.twilio.com/v2/Services/"+this.serId+"/Channels/"+channelid+"/Members","ChannelSid="+channelid+"&Identity="+this.identity+"&ServiceSid="+this.serId,this.options); 
 
-    return this.httpobj.post("https://chat.twilio.com/v2/Services/" + this.serId + "/Channels/" + this.channel + "/Messages", "ServiceSid=" + this.serId + "&ChannelSid=" + this.channel + "&Body=" + Mymsg + "&From=" + this.identity, this.options)
+  }
+  Msgs(Mymsg):Observable<any> {
+
+    return this.httpobj.post("https://chat.twilio.com/v2/Services/" + this.serId + "/Channels/" + this.channel + "/Messages", "ServiceSid=" + this.serId + "&ChannelSid=" + this.channel + "&Body=" + Mymsg + "&From=" + this.identity , this.options)
+
+  }
+  searchch():Observable<any>
+  {
+    return  this.httpobj.get("https://chat.twilio.com/v2/Services/"+this.serId+"/Channels",this.options).pipe(map(data=>data)); 
 
   }
 
-  listmsgs(): Observable<any> {
-    return this.httpobj.get("https://chat.twilio.com/v2/Services/" + this.serId + "/Channels/" + this.channel + "/Messages", this.options).pipe(map(data => data));
+  listmsgs(channeliden):Observable<any> {
+    this.channel=channeliden;
+    return this.httpobj.get("https://chat.twilio.com/v2/Services/" + this.serId + "/Channels/" + channeliden + "/Messages", this.options).pipe(map(data => data));
   }
-  addRole() {
-    return this.httpobj.post("https://chat.twilio.com/v2/Services/" + this.serId + "/Roles", "FriendlyName=FriendlyName&Type=deployment&Permission=createChannel", this.options);
+  memlist(channelId):Observable<any>
+  {
+    return this.httpobj.get("https://chat.twilio.com/v2/Services/" +this.serId+ "/Channels/"+ channelId + "/Members",this.options).pipe(map(data=>data));
   }
+  channellist():Observable<any>
+  {
+    return this.httpobj.get("https://chat.twilio.com/v2/Services/" +this.serId+"/Channels",this.options).pipe(map(data=>data));
+  }
+  
 }

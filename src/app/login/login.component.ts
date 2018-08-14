@@ -23,6 +23,9 @@ title="LET'S CHAT";
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
         localStorage.setItem("Identity",userData.email);
+        localStorage.setItem("image",userData.image);
+        localStorage.setItem("name",userData.name);
+       // localStorage.setItem("name",userData.name);
       this.router.navigate(['chatpage'])
       }
     );

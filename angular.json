@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "chatapp"
+  "defaultProject": "chatapp",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    }
+  }
 }

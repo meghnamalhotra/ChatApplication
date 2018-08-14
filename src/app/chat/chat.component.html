@@ -1,27 +1,33 @@
 
 <div id="main">
 <div id="login">
-<input type="text" placeholder="Search Channel">
+<input type="text" placeholder="Search Channel"  [(ngModel)]="channel">
 <button (click)="searchCh()">Search</button><br/>
+<span >{{mychann}} <button (click)="joinch()">Join</button></span>
 <br /><br />
 <button (click)="Authenticate()">Authenticate </button><br /><br />
 <input type="text"  [(ngModel)]="Mychannel">
 <button (click)="AddCh()">Add Channel</button>
-<button (click)="addRole()" >Add Role</button>
+
+<h4><u>YOUR JOINED CHANNELS</u></h4>
+<ol >
+<li id="channellist" *ngFor="let arr of mych" (click)="listallmsgs(arr.id)">{{arr.name}}</li>
+</ol>
+<button (click)="logout()">LOGOUT</button>
 </div>
 
 <div id="chat">
-    <div id="head"></div><hr>
+    <div id="head"><h1 >Your Channel is <span id="span">{{nam}} <img id="imagee"src={{img}} alt="img" ><br></span></h1></div><hr>
+    
     <div id="msgs">
     <ul *ngFor="let arr of arrylist" >
-            <span > {{arr.sender}} <br />{{arr.msg}}</span>
-    <li></li>
+            
+    <li id="list"><span id="chatdiv"><span id="chit"> {{arr.sender}} {{arr.msg}}</span></span></li>
     
-     
     </ul>
     </div>
     <button >+</button>
-    <input id="input" type="text"  [(ngModel)]="Mymsg" class="msg">
+    <input id="input" type="text"  [(ngModel)]="Mymsg" class="msg" >
     <button id="button" (click)="Msg() ">Send Text</button>
 </div>
 </div>
